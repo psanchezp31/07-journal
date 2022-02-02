@@ -12,7 +12,7 @@
 export default {
   methods: {
     goToDayBook(){
-      this.$router.push({name:'daybook'}) // al darle click en button @click="goToDayBook" 
+      this.$router.push({name:'no-entry'}) // al darle click en button @click="goToDayBook" 
     } // me lleva a la ruta /daybook
   },
 }
