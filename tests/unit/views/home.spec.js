@@ -1,0 +1,25 @@
+import { shallowMount } from "@vue/test-utils";
+import Home from "@/views/Home";
+describe("Pruebas en el home view", () => {
+  test("debe de renderizar el componente correctamente", () => {
+    const wrapper = shallowMount(Home);
+    expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  test("hacer click en un boton debe de redireccionar  a no-entry", () => {
+    const mockRouter = {
+      push: jest.fn(), //mock a function
+    };
+    const wrapper = shallowMount(Home, {
+      global: {
+        mocks: {
+          $router: mockRouter, // se hace un obj mock para simular los objetos globales como $router y que apunte a la funcion mockiada
+        },
+      },
+    });
+
+    wrapper.find("button").trigger("click");
+    expect(mockRouter.push).toHaveBeenCalled();
+    expect(mockRouter.push).toHaveBeenCalledWith({ name: "no-entry" });  //probar si ha sido llamado el router con el parametro name al no entry
+  });
+});
