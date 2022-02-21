@@ -88,7 +88,7 @@ export default {
       this.entry = entry;
     },
     async saveEntry() {
-      new Swal({
+      Swal.fire({
         title: "Espere por favor",
         allowOutsideClick: false,
       });
@@ -113,14 +113,13 @@ export default {
       });
 
       if (isConfirmed) {
-        new Swal({
+        Swal.fire({
           title: "Espere por favor",
           allowOutsideClick: false,
         });
         Swal.showLoading();
         await this.deleteEntry(this.id);
         this.$router.push({ name: "no-entry" });
-        this.loadEntry();
         Swal.fire("Eliminado", "", "success");
       }
     },

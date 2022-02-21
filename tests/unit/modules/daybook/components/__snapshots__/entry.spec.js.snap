@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en el entry component debe de hacer match con el snapshot  1`] = `
+<div class="entry-container mb-3 pointer p-2">
+  <div class="entry-title d-flex"><span class="text-success fs-5 fw-bold">14</span><span class="mx-1 fs-5">Febrero</span><span class="mx-1 fw-light">2022, Lunes</span></div>
+  <div class="entry-description">Mannyto </div>
+</div>
+`;
