@@ -19,3 +19,7 @@ export const addEntry = (state, createdEntry) => {
 export const deleteEntry = (state, id) =>{
   state.entries = state.entries.filter(entry => entry.id !== id)
 }
+
+export const clearEntries = (state) =>{
+  state.entries = []
+}
