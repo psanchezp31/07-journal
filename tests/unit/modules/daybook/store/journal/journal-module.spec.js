@@ -1,6 +1,7 @@
 const { createStore } = require("vuex");
 import journal from "@/modules/daybook/store/journal";
 import { journalState } from "../../../../mock-data/test-journal-state";
+import authApi from "@/api/authApi";
 
 //simulando crear el store
 const createVuexStore = (initialState) =>
@@ -14,6 +15,16 @@ const createVuexStore = (initialState) =>
   });
 
 describe("Vuex - pruebas en el journal module", () => {
+  //sending idToken to firebase to all the request 
+  beforeAll(async () => {
+    const { data } = await authApi.post(":signInWithPassword", {
+      email: "test@test.com",
+      pasword: "123456",
+      returnSecureToken: true,
+    });
+    localStorage.setItem("idToken", data.idToken);
+  });
+
   test("este es el estado inicial, debe tener el estado inicial", () => {
     //se crea un mock de data state inicial, en la carpeta mock-data
     const store = createVuexStore(journalState);
